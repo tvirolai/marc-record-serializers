@@ -15,14 +15,14 @@ describe('AlephSequential', function() {
 
 	testFiles.forEach(function(fromFile) {
 		var toFile = fromFile.replace("from", "to");
-		console.log(typeof filesPath, typeof toFile);
+	
 		it('should convert file "' + fromFile + '" to file "' + toFile + '".', function(done) {
 
 			var fromFilePath = path.resolve(filesPath, fromFile);
 			var toFilePath = path.resolve(filesPath, toFile);
 
 			var expectedRecord = fs.readFileSync(toFilePath, 'utf8');
-			var reader = new Serializers.AlephSequentialReader(fs.createReadStream(fromFilePath));
+			var reader = new Serializers.AlephSequential.Reader(fs.createReadStream(fromFilePath));
 
 			var parsedRecords = [];
 			reader.on('data', function(record) {

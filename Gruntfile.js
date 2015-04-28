@@ -33,10 +33,10 @@ module.exports = function(grunt) {
                 options: {
                     coverage: true,
                     check: {
-                        lines: 100,
-                        statements: 100,
-                        branches: 100,
-                        functions: 100
+                        lines: 90,
+                        statements: 90,
+                        branches: 80,
+                        functions: 90
                     }
                 }
             }
