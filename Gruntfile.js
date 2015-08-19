@@ -42,12 +42,20 @@ module.exports = function(grunt) {
             }
         },
 
+        watch: {
+        	test: {
+        		files: ['**/*.js'],
+        		tasks: ['mochaTest']
+        	}
+        }
+
 
 	});
 
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-mocha-test');
 	grunt.loadNpmTasks('grunt-mocha-istanbul');
+	grunt.loadNpmTasks('grunt-contrib-watch');
 
 	grunt.registerTask('lint', ['jshint']);
 	grunt.registerTask('test', ['mochaTest']);
