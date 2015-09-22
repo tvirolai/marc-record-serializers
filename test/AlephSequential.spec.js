@@ -54,5 +54,22 @@ describe('AlephSequential', function() {
 
             });
 
+	    it('should emit an error because the file does not exist', function(done) {
+
+                        var reader = new Serializers.AlephSequential.Reader(fs.createReadStream('foo'));
+                        
+                        reader.on('error', function() {
+			   done();
+			});
+		        reader.on('data', function() {
+			    throw new Error();
+		        });
+		        reader.on('data', function() {
+			    throw new Error();
+		        });
+
+            });
+
+
 	});
 });
