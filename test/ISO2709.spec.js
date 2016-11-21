@@ -10,6 +10,21 @@ var Record = require('marc-record-js');
 
 describe('ISO2709', function() {
 
+  describe('when converting empty string', function() {
+    it('should throw an error', function() {
+
+      var error;
+      try {
+        Serializers.ISO2709.fromISO2709("");
+      } catch (err) {
+        error = err;
+      }
+
+      expect(error.message).to.equal("Invalid record");
+    });
+
+  });
+
 	describe('ISO2709 conversion', function() {
 
 		it('should work', function() {
