@@ -1,15 +1,12 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
-<find-doc>
-<record>
-<metadata>
 <oai_marc>
 <fixfield id="LDR">^^^^^cz^^a2200229n^^4500</fixfield>
-<varfield id="UPD" i1=" " i2=" ">
-<subfield label="a">N</subfield>
-</varfield>
 <fixfield id="001">000108333</fixfield>
 <fixfield id="005">20160320131505.0</fixfield>
 <fixfield id="008">011001|n|az|||aab|^^^^^^^^^^^|^aaa^^^^^^</fixfield>
+<varfield id="UPD" i1=" " i2=" ">
+<subfield label="a">N</subfield>
+</varfield>
 <varfield id="040" i1=" " i2=" ">
 <subfield label="a">FiFenn</subfield>
 <subfield label="b">fin</subfield>
@@ -71,8 +68,4 @@
 <subfield label="a">(FI-ASTERI-N)000108333</subfield>
 </varfield>
 </oai_marc>
-</metadata>
-</record>
-<session-id>KG8QR1T98VX2DA4F55R8XDN6XIY4H7IM5DXVHK2XF5GP1TJRIH</session-id>
-</find-doc>
  
