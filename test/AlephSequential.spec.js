@@ -41,14 +41,22 @@ describe('AlephSequential', function() {
 
     });
 
-    it('should emit an error because of invalid data', function(done) {
+  });
 
-      var filePath = path.resolve(__dirname, 'files/AlephSequential/erroneous');
-      var reader = new Serializers.AlephSequential.Reader(fs.createReadStream(filePath));
-                  
-      reader.on('error', function() {
-        done();
-      });
+  it('should emit an error because of invalid data', function(done) {
+
+    var filePath = path.resolve(__dirname, 'files/AlephSequential/erroneous');
+    var reader = new Serializers.AlephSequential.Reader(fs.createReadStream(filePath));
+                
+    reader.on('error', function(err) {
+      expect(err.message).to.contain('Could not parse tag from line');
+      done();
     });
+
+
+    reader.on('data', function() {
+      done(new Error('record was read succesfully from invalid data'));
+    });
+      
   });
 });
