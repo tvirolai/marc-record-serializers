@@ -1,6 +1,6 @@
 {
   "name": "marc-record-serializers",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Collection of different serializations for marc-record-js ",
   "main": "lib/index.js",
   "scripts": {
