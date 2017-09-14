@@ -92,4 +92,19 @@ describe('Parsing malformed records', function() {
     expect(record.toJsonObject()).to.be.an.instanceof(Object);
     done();
   });
+
+  it('should emit an error because the file does not exist', function(done) {
+
+    var reader = new Serializers.MARCXML.Reader(fs.createReadStream('foo'));
+    
+    reader.on('error', function(error) {
+      expect(error.code).to.equal('ENOENT');
+      done();
+    });
+    
+    reader.on('data', function() {
+      done(new Error('record was read succesfully from missing file'));
+    });
+  });
+    
 });
