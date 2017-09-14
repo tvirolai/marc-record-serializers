@@ -33,7 +33,7 @@ describe('MARCXML reader', function() {
 
       reader.on('error', function(error) {
         expect('Error: ' + error.message).to.equal(expectedRecord);
-    
+
       });
 
       reader.on('end', function() {
@@ -74,11 +74,22 @@ describe('MARCXML toMARCXML', function() {
       }
 
       var record = Serializers.MARCXML.toMARCXML( Record.fromString(inJS) );
-      
+
       var declaration = '<?xml version="1.0" encoding="UTF-8"?>\n';
       expect(pd.xml(declaration+record)).to.equal(pd.xml(inMarcMXL));
       done();
 
     });
+  });
+});
+
+describe('Parsing malformed records', function() {
+  it('Should parse records with empty fields', function(done) {
+    var filesPath = path.resolve(__dirname, 'files/MARCXML');
+    var inMarcMXL = fs.readFileSync(`${filesPath}/emptyField`, 'utf8').trim();
+    var record = Serializers.MARCXML.fromMARCXML(inMarcMXL);
+    expect(record).to.be.an.instanceof(Object);
+    expect(record.toJsonObject()).to.be.an.instanceof(Object);
+    done();
   });
 });
