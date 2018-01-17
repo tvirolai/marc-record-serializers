@@ -5,6 +5,7 @@
   "main": "lib/index.js",
   "scripts": {
     "test": "mocha",
+    "test:watch": "mocha --watch",
     "lint": "eslint ."
   },
   "author": "Pasi Tuominen <pasi.tuominen@gmail.com>",

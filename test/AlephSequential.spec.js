@@ -4,6 +4,7 @@
 var chai = require('chai');
 var expect = chai.expect;
 var Serializers = require('../lib/index.js');
+var Record = require('marc-record-js');
 var fs = require('fs');
 var path = require('path');
 
@@ -43,13 +44,25 @@ describe('AlephSequential', function() {
 
   });
 
-  it('should parse a record from a string representation', function(done) {
+  it('should parse a record from a string representation of Aleph Sequential', function(done) {
     var recordAsString = fs.readFileSync(path.resolve(filesPath, 'from1'), 'utf8')
       .split('\n')
       .filter(row => row.length > 0);
     var parsedRecord = Serializers.AlephSequential.fromAlephSequential(recordAsString);
     expect(parsedRecord.toString()).to.have.length(978);
     expect(parsedRecord).to.be.an.instanceof(Object);
+    done();
+  });
+
+  it('should convert a record to Aleph Sequential', function(done) {
+    for (var i = 1; i <= 4; i++) {
+      var recordAsString = fs.readFileSync(path.resolve(filesPath, `to${i}`), 'utf8');
+      var expectedRecord = fs.readFileSync(path.resolve(filesPath, `from${i}`), 'utf8');
+      var parsedRecord = Record.fromString(recordAsString);
+      console.log(recordAsString)
+      var result = Serializers.AlephSequential.toAlephSequential(parsedRecord);
+      expect(expectedRecord).to.equal(result);
+    }
     done();
   });
 
